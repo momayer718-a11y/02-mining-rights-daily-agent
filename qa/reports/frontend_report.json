@@ -1,0 +1,16 @@
+{
+  "passed": true,
+  "missing": [],
+  "placeholder_hits": [],
+  "viewports": [
+    {
+      "width": 1280
+    },
+    {
+      "width": 768
+    },
+    {
+      "width": 390
+    }
+  ]
+}

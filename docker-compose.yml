@@ -1,0 +1,15 @@
+services:
+  mining-rights-daily-agent:
+    build: .
+    ports:
+      - "8002:8002"
+    volumes:
+      - ./outputs:/app/outputs
+    environment:
+      - PYTHONPATH=/app
+      - APIMART_API_KEY=${APIMART_API_KEY:-}
+      - APIMART_BASE_URL=${APIMART_BASE_URL:-https://api.apimart.ai/v1}
+      - APIMART_MODEL=${APIMART_MODEL:-gemini-3.5-flash}
+    command: >
+      sh -c "python -m agent.daily_brief '给我生成一份关于 Pilbara 锂矿的今日简报' --out outputs/pilbara_daily.md &&
+             uvicorn console.app:app --host 0.0.0.0 --port 8002"

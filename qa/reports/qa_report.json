@@ -1,0 +1,377 @@
+{
+  "tool": "02-mining-rights-daily-agent",
+  "status": "passed",
+  "elapsed_ms": 8.31,
+  "frontend": {
+    "passed": true,
+    "missing": [],
+    "placeholder_hits": [],
+    "viewports": [
+      {
+        "width": 1280
+      },
+      {
+        "width": 768
+      },
+      {
+        "width": 390
+      }
+    ]
+  },
+  "backend": {
+    "total": 25,
+    "passed": 25,
+    "success_rate": 1.0,
+    "avg_elapsed_ms": 0.15,
+    "p95_elapsed_ms": 0.2,
+    "limited_rate": 0.36,
+    "unique_brief_signatures": 18,
+    "rows": [
+      {
+        "prompt": "给我生成一份关于 Pilbara lithium 的今日简报",
+        "expected": "ok",
+        "actual": "ok",
+        "passed": true,
+        "elapsed_ms": 0.75,
+        "warnings": [
+          "fixture price cache; replace with licensed market feed for production"
+        ],
+        "missing_sections": [],
+        "placeholder_hits": [],
+        "workflow_ok": true
+      },
+      {
+        "prompt": "给我生成一份关于 Peru copper 的今日简报",
+        "expected": "ok",
+        "actual": "ok",
+        "passed": true,
+        "elapsed_ms": 0.2,
+        "warnings": [
+          "fixture price cache; replace with licensed market feed for production"
+        ],
+        "missing_sections": [],
+        "placeholder_hits": [],
+        "workflow_ok": true
+      },
+      {
+        "prompt": "给我生成一份关于 Indonesia nickel 的今日简报",
+        "expected": "ok",
+        "actual": "ok",
+        "passed": true,
+        "elapsed_ms": 0.17,
+        "warnings": [
+          "fixture price cache; replace with licensed market feed for production"
+        ],
+        "missing_sections": [],
+        "placeholder_hits": [],
+        "workflow_ok": true
+      },
+      {
+        "prompt": "给我生成一份关于 China rare earth 的今日简报",
+        "expected": "ok",
+        "actual": "ok",
+        "passed": true,
+        "elapsed_ms": 0.19,
+        "warnings": [
+          "fixture price cache; replace with licensed market feed for production"
+        ],
+        "missing_sections": [],
+        "placeholder_hits": [],
+        "workflow_ok": true
+      },
+      {
+        "prompt": "给我生成一份关于 DRC cobalt 的今日简报",
+        "expected": "limited",
+        "actual": "limited",
+        "passed": true,
+        "elapsed_ms": 0.1,
+        "warnings": [
+          "DRC/cobalt source not loaded",
+          "no relevant news evidence found",
+          "price trend unsupported; no silent fallback applied",
+          "unsupported commodity: cobalt"
+        ],
+        "missing_sections": [],
+        "placeholder_hits": [],
+        "workflow_ok": true
+      },
+      {
+        "prompt": "Pilbara spodumene logistics daily brief",
+        "expected": "ok",
+        "actual": "ok",
+        "passed": true,
+        "elapsed_ms": 0.14,
+        "warnings": [
+          "fixture price cache; replace with licensed market feed for production"
+        ],
+        "missing_sections": [],
+        "placeholder_hits": [],
+        "workflow_ok": true
+      },
+      {
+        "prompt": "Chile copper concentrator maintenance brief",
+        "expected": "ok",
+        "actual": "ok",
+        "passed": true,
+        "elapsed_ms": 0.13,
+        "warnings": [
+          "fixture price cache; replace with licensed market feed for production"
+        ],
+        "missing_sections": [],
+        "placeholder_hits": [],
+        "workflow_ok": true
+      },
+      {
+        "prompt": "Indonesian nickel export restriction brief",
+        "expected": "ok",
+        "actual": "ok",
+        "passed": true,
+        "elapsed_ms": 0.22,
+        "warnings": [
+          "fixture price cache; replace with licensed market feed for production"
+        ],
+        "missing_sections": [],
+        "placeholder_hits": [],
+        "workflow_ok": true
+      },
+      {
+        "prompt": "China rare earth quota brief",
+        "expected": "ok",
+        "actual": "ok",
+        "passed": true,
+        "elapsed_ms": 0.13,
+        "warnings": [
+          "fixture price cache; replace with licensed market feed for production"
+        ],
+        "missing_sections": [],
+        "placeholder_hits": [],
+        "workflow_ok": true
+      },
+      {
+        "prompt": "Australia lithium processing grant brief",
+        "expected": "ok",
+        "actual": "ok",
+        "passed": true,
+        "elapsed_ms": 0.14,
+        "warnings": [
+          "fixture price cache; replace with licensed market feed for production"
+        ],
+        "missing_sections": [],
+        "placeholder_hits": [],
+        "workflow_ok": true
+      },
+      {
+        "prompt": "Peru copper community water risk brief",
+        "expected": "ok",
+        "actual": "ok",
+        "passed": true,
+        "elapsed_ms": 0.13,
+        "warnings": [
+          "fixture price cache; replace with licensed market feed for production"
+        ],
+        "missing_sections": [],
+        "placeholder_hits": [],
+        "workflow_ok": true
+      },
+      {
+        "prompt": "nickel laterite smelter margin brief",
+        "expected": "ok",
+        "actual": "ok",
+        "passed": true,
+        "elapsed_ms": 0.13,
+        "warnings": [
+          "fixture price cache; replace with licensed market feed for production"
+        ],
+        "missing_sections": [],
+        "placeholder_hits": [],
+        "workflow_ok": true
+      },
+      {
+        "prompt": "rare earth traceability policy brief",
+        "expected": "ok",
+        "actual": "ok",
+        "passed": true,
+        "elapsed_ms": 0.12,
+        "warnings": [
+          "fixture price cache; replace with licensed market feed for production"
+        ],
+        "missing_sections": [],
+        "placeholder_hits": [],
+        "workflow_ok": true
+      },
+      {
+        "prompt": "lithium carbonate price risk brief",
+        "expected": "ok",
+        "actual": "ok",
+        "passed": true,
+        "elapsed_ms": 0.11,
+        "warnings": [
+          "fixture price cache; replace with licensed market feed for production"
+        ],
+        "missing_sections": [],
+        "placeholder_hits": [],
+        "workflow_ok": true
+      },
+      {
+        "prompt": "copper inventory risk brief",
+        "expected": "ok",
+        "actual": "ok",
+        "passed": true,
+        "elapsed_ms": 0.12,
+        "warnings": [
+          "fixture price cache; replace with licensed market feed for production"
+        ],
+        "missing_sections": [],
+        "placeholder_hits": [],
+        "workflow_ok": true
+      },
+      {
+        "prompt": "zinc mine disruption brief",
+        "expected": "limited",
+        "actual": "limited",
+        "passed": true,
+        "elapsed_ms": 0.1,
+        "warnings": [
+          "fixture price cache; replace with licensed market feed for production",
+          "limited news coverage for zinc; loaded MCP cache lacks dedicated article evidence",
+          "no relevant news evidence found"
+        ],
+        "missing_sections": [],
+        "placeholder_hits": [],
+        "workflow_ok": true
+      },
+      {
+        "prompt": "iron ore steel mill restocking brief",
+        "expected": "limited",
+        "actual": "limited",
+        "passed": true,
+        "elapsed_ms": 0.11,
+        "warnings": [
+          "fixture price cache; replace with licensed market feed for production",
+          "limited news coverage for iron ore; loaded MCP cache lacks dedicated article evidence"
+        ],
+        "missing_sections": [],
+        "placeholder_hits": [],
+        "workflow_ok": true
+      },
+      {
+        "prompt": "DRC cobalt royalty brief",
+        "expected": "limited",
+        "actual": "limited",
+        "passed": true,
+        "elapsed_ms": 0.09,
+        "warnings": [
+          "DRC/cobalt source not loaded",
+          "no relevant news evidence found",
+          "price trend unsupported; no silent fallback applied",
+          "unsupported commodity: cobalt"
+        ],
+        "missing_sections": [],
+        "placeholder_hits": [],
+        "workflow_ok": true
+      },
+      {
+        "prompt": "cobalt artisanal mining risk brief",
+        "expected": "limited",
+        "actual": "limited",
+        "passed": true,
+        "elapsed_ms": 0.08,
+        "warnings": [
+          "DRC/cobalt source not loaded",
+          "no relevant news evidence found",
+          "price trend unsupported; no silent fallback applied",
+          "unsupported commodity: cobalt"
+        ],
+        "missing_sections": [],
+        "placeholder_hits": [],
+        "workflow_ok": true
+      },
+      {
+        "prompt": "gold resource estimate brief",
+        "expected": "limited",
+        "actual": "limited",
+        "passed": true,
+        "elapsed_ms": 0.08,
+        "warnings": [
+          "no relevant news evidence found",
+          "price trend unsupported; no silent fallback applied",
+          "unsupported commodity: gold"
+        ],
+        "missing_sections": [],
+        "placeholder_hits": [],
+        "workflow_ok": true
+      },
+      {
+        "prompt": "uranium permitting brief",
+        "expected": "limited",
+        "actual": "limited",
+        "passed": true,
+        "elapsed_ms": 0.15,
+        "warnings": [
+          "no relevant news evidence found",
+          "price trend unsupported; no silent fallback applied",
+          "unsupported commodity: uranium"
+        ],
+        "missing_sections": [],
+        "placeholder_hits": [],
+        "workflow_ok": true
+      },
+      {
+        "prompt": "graphite anode supply brief",
+        "expected": "limited",
+        "actual": "limited",
+        "passed": true,
+        "elapsed_ms": 0.08,
+        "warnings": [
+          "no relevant news evidence found",
+          "price trend unsupported; no silent fallback applied",
+          "unsupported commodity: graphite"
+        ],
+        "missing_sections": [],
+        "placeholder_hits": [],
+        "workflow_ok": true
+      },
+      {
+        "prompt": "manganese battery supply brief",
+        "expected": "limited",
+        "actual": "limited",
+        "passed": true,
+        "elapsed_ms": 0.11,
+        "warnings": [
+          "no relevant news evidence found",
+          "price trend unsupported; no silent fallback applied",
+          "unsupported commodity: manganese"
+        ],
+        "missing_sections": [],
+        "placeholder_hits": [],
+        "workflow_ok": true
+      },
+      {
+        "prompt": "rare earth environmental compliance brief",
+        "expected": "ok",
+        "actual": "ok",
+        "passed": true,
+        "elapsed_ms": 0.13,
+        "warnings": [
+          "fixture price cache; replace with licensed market feed for production"
+        ],
+        "missing_sections": [],
+        "placeholder_hits": [],
+        "workflow_ok": true
+      },
+      {
+        "prompt": "Pilbara port scheduling price risk brief",
+        "expected": "ok",
+        "actual": "ok",
+        "passed": true,
+        "elapsed_ms": 0.16,
+        "warnings": [
+          "fixture price cache; replace with licensed market feed for production"
+        ],
+        "missing_sections": [],
+        "placeholder_hits": [],
+        "workflow_ok": true
+      }
+    ]
+  }
+}

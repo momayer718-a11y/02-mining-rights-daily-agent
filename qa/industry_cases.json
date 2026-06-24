@@ -1,0 +1,28 @@
+[
+  {"prompt":"给我生成一份关于 Pilbara lithium 的今日简报","expect_status":"ok"},
+  {"prompt":"给我生成一份关于 Peru copper 的今日简报","expect_status":"ok"},
+  {"prompt":"给我生成一份关于 Indonesia nickel 的今日简报","expect_status":"ok"},
+  {"prompt":"给我生成一份关于 China rare earth 的今日简报","expect_status":"ok"},
+  {"prompt":"给我生成一份关于 DRC cobalt 的今日简报","expect_status":"limited"},
+  {"prompt":"Pilbara spodumene logistics daily brief","expect_status":"ok"},
+  {"prompt":"Chile copper concentrator maintenance brief","expect_status":"ok"},
+  {"prompt":"Indonesian nickel export restriction brief","expect_status":"ok"},
+  {"prompt":"China rare earth quota brief","expect_status":"ok"},
+  {"prompt":"Australia lithium processing grant brief","expect_status":"ok"},
+  {"prompt":"Peru copper community water risk brief","expect_status":"ok"},
+  {"prompt":"nickel laterite smelter margin brief","expect_status":"ok"},
+  {"prompt":"rare earth traceability policy brief","expect_status":"ok"},
+  {"prompt":"lithium carbonate price risk brief","expect_status":"ok"},
+  {"prompt":"copper inventory risk brief","expect_status":"ok"},
+  {"prompt":"zinc mine disruption brief","expect_status":"limited"},
+  {"prompt":"iron ore steel mill restocking brief","expect_status":"limited"},
+  {"prompt":"DRC cobalt royalty brief","expect_status":"limited"},
+  {"prompt":"cobalt artisanal mining risk brief","expect_status":"limited"},
+  {"prompt":"gold resource estimate brief","expect_status":"limited"},
+  {"prompt":"uranium permitting brief","expect_status":"limited"},
+  {"prompt":"graphite anode supply brief","expect_status":"limited"},
+  {"prompt":"manganese battery supply brief","expect_status":"limited"},
+  {"prompt":"rare earth environmental compliance brief","expect_status":"ok"},
+  {"prompt":"Pilbara port scheduling price risk brief","expect_status":"ok"}
+]
+

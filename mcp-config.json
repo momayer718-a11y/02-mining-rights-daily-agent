@@ -1,0 +1,22 @@
+{
+  "mcpServers": {
+    "mining-news-mcp": {
+      "command": "python3",
+      "args": ["-m", "servers.mining_news_mcp"],
+      "cwd": "/Users/Zhuanz/Desktop/面试题目MVP/02-mining-rights-daily-agent",
+      "env": {"PYTHONPATH": "/Users/Zhuanz/Desktop/面试题目MVP/02-mining-rights-daily-agent"}
+    },
+    "mineral-pdf-mcp": {
+      "command": "python3",
+      "args": ["-m", "servers.mineral_pdf_mcp"],
+      "cwd": "/Users/Zhuanz/Desktop/面试题目MVP/02-mining-rights-daily-agent",
+      "env": {"PYTHONPATH": "/Users/Zhuanz/Desktop/面试题目MVP/02-mining-rights-daily-agent"}
+    },
+    "lme-price-mcp": {
+      "command": "python3",
+      "args": ["-m", "servers.lme_price_mcp"],
+      "cwd": "/Users/Zhuanz/Desktop/面试题目MVP/02-mining-rights-daily-agent",
+      "env": {"PYTHONPATH": "/Users/Zhuanz/Desktop/面试题目MVP/02-mining-rights-daily-agent"}
+    }
+  }
+}
