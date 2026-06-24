@@ -49,7 +49,7 @@ def generate_brief_payload(prompt: str) -> dict:
     markdown = _model_markdown(prompt, intent, articles, resources, latest, trend, warnings)
     if not markdown:
         markdown = _render_markdown(intent, articles, resources, latest, trend, warnings)
-    trace.append(_node("Brief Synthesizer", "Gemini/fallback markdown", "done" if markdown else "failed", "生成中文 Markdown 简报", synth_started, []))
+    trace.append(_node("Brief Synthesizer", "model/fallback markdown", "done" if markdown else "failed", "生成中文 Markdown 简报", synth_started, []))
     trace.append(_node("Markdown Output", "render", "done", "简报已输出到控制台和 outputs/pilbara_daily.md", 0, []))
 
     return {

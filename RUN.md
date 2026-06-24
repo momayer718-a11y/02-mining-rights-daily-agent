@@ -1,6 +1,6 @@
 # RUN
 
-## 本地 5 分钟验证
+## Local 5 Minute Check
 
 ```bash
 cd /Users/Zhuanz/Desktop/面试题目MVP/02-mining-rights-daily-agent
@@ -11,7 +11,7 @@ make brief
 cat outputs/pilbara_daily.md
 ```
 
-启动可视化控制台：
+Start the Web console:
 
 ```bash
 make console
@@ -25,26 +25,30 @@ cd /Users/Zhuanz/Desktop/面试题目MVP/02-mining-rights-daily-agent
 docker compose up --build
 ```
 
-Docker 启动后访问 `http://localhost:8002`。
+Open `http://localhost:8002` after startup.
 
-## 可选 APIMart / Gemini
+## Optional Live Model
 
 ```bash
 cp .env.example .env
-export APIMART_API_KEY=your_key
-export APIMART_BASE_URL=https://api.apimart.ai/v1
-export APIMART_MODEL=gemini-3.5-flash
+export MODEL_API_KEY=your_key
+export MODEL_BASE_URL=https://apihub.agnes-ai.com/v1
+export MODEL_NAME=agnes-2.0-flash
 ```
 
-无 key 时自动使用中文模板 fallback；不要把真实 key 写入项目文件或压缩包。
+The key is read from the environment only. Do not write real keys into project files, Docker Compose, README, QA reports or release zips.
 
-## 输出说明
+## Brief Smoke Test
 
-- 简报正文是中文 Markdown，不带 `[ok]` 等 API 状态前缀。
-- 工作流画布展示 Agent Planner、3 个 MCP server 和 Brief Synthesizer。
-- Raw Tool Output 默认折叠，用于审计工具结果和 JSON。
+```bash
+curl -s http://localhost:8002/brief \
+  -H 'content-type: application/json' \
+  -d '{"prompt":"给我生成一份关于 Indonesia nickel 的今日简报"}' | jq
+```
 
-## QA 与封装
+Expected shape: Chinese Markdown brief, complete workflow trace, `limited` warnings when evidence is missing, and Raw Tool Output folded in the Web console.
+
+## QA And Package
 
 ```bash
 make test
@@ -52,9 +56,9 @@ make qa
 make package
 ```
 
-`make qa` 生成 `QA_REPORT.md` 和 `qa/reports/*.json`。`make package` 生成 `/Users/Zhuanz/Desktop/02-mining-rights-daily-agent-tool.zip`。
+`make qa` writes `QA_REPORT.md` and `qa/reports/*.json`. `make package` writes `/Users/Zhuanz/Desktop/02-mining-rights-daily-agent-tool.zip`.
 
-## MCP server 单独启动
+## MCP Server Commands
 
 ```bash
 python3 -m servers.mining_news_mcp
@@ -64,4 +68,4 @@ python3 -m servers.lme_price_mcp
 
 ## Claude Desktop / Cursor
 
-把 `mcp-config.json` 里的绝对路径改成当前机器路径后即可接入。本仓库已按 `/Users/Zhuanz/Desktop/面试题目MVP/02-mining-rights-daily-agent` 生成默认配置。
+Use `mcp-config.json` as the starting config and adjust paths if the project is moved.

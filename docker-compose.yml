@@ -7,9 +7,9 @@ services:
       - ./outputs:/app/outputs
     environment:
       - PYTHONPATH=/app
-      - APIMART_API_KEY=${APIMART_API_KEY:-}
-      - APIMART_BASE_URL=${APIMART_BASE_URL:-https://api.apimart.ai/v1}
-      - APIMART_MODEL=${APIMART_MODEL:-gemini-3.5-flash}
+      - MODEL_API_KEY=${MODEL_API_KEY:-}
+      - MODEL_BASE_URL=${MODEL_BASE_URL:-https://apihub.agnes-ai.com/v1}
+      - MODEL_NAME=${MODEL_NAME:-agnes-2.0-flash}
     command: >
       sh -c "python -m agent.daily_brief '给我生成一份关于 Pilbara 锂矿的今日简报' --out outputs/pilbara_daily.md &&
              uvicorn console.app:app --host 0.0.0.0 --port 8002"

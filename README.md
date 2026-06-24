@@ -1,34 +1,78 @@
-# 02 - Mining Rights Daily Agent MVP
+# Mining Rights Daily Agent Console
 
-对应题 #2：基于 MCP 协议的“矿权日报 Agent”。
+Chinese mining-rights daily brief agent with three MCP-style tools, a visible workflow canvas and auditable raw tool output. The user enters an industry topic such as `给我生成一份关于 Pilbara 锂矿的今日简报`; the agent plans the request, calls news/resource/price tools, and returns a structured Chinese Markdown brief.
 
-包含三个独立 MCP server：
+This repository is project 02 from the mining interview MVP set. It is fully standalone and can be evaluated or zipped independently.
 
-- `mining-news-mcp`: `search(query, days)`, `fetch_article(url)`
-- `mineral-pdf-mcp`: `extract_resources(pdf_url)`
-- `lme-price-mcp`: `get_price(commodity, date)`, `get_trend(commodity, days)`
+## What It Does
 
-Agent client 输入：
+- Implements three independent MCP-style servers/tools:
+  - `mining-news-mcp`: `search(query, days)`, `fetch_article(url)`
+  - `mineral-pdf-mcp`: `extract_resources(pdf_url)`
+  - `lme-price-mcp`: `get_price(commodity, date)`, `get_trend(commodity, days)`
+- Parses commodity, region, topic and time window from Chinese, English or mixed prompts.
+- Generates Chinese Markdown briefs with a fixed structure.
+- Shows the agent workflow as a production-style canvas: User Input -> Planner -> three MCP tools -> Brief Synthesizer -> Markdown Output.
+- Keeps Raw Tool Output folded by default for audit and debugging.
+- Uses a live model when configured, with a Chinese template fallback when no key is present.
+- Returns `limited` plus warnings for unsupported commodities or missing evidence instead of silently falling back to lithium.
 
-```text
-给我生成一份关于 Pilbara 锂矿的今日简报
+## Brief Structure
+
+```markdown
+# 主题今日简报
+## 一、执行摘要
+## 二、新闻摘要
+## 三、资源量 / 储量数据
+## 四、价格走势
+## 五、风险提示
+## 六、引用来源
+## 七、数据缺口
 ```
 
-输出中文 Markdown 简报：新闻摘要、储量数据、价格走势、风险提示、引用链接和数据缺口。
+The brief body is Chinese and does not include `[ok]` or chat-style prefixes.
+
+## Quick Start
 
 ```bash
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
 make brief
+make console
+```
+
+Open `http://localhost:8002`.
+
+Docker:
+
+```bash
 docker compose up --build
 ```
 
-Web 控制台：
+## Model Configuration
+
+The app reads model settings from environment variables only. Do not commit real keys.
 
 ```bash
-make console
-# open http://localhost:8002
+export MODEL_API_KEY=your_key
+export MODEL_BASE_URL=https://apihub.agnes-ai.com/v1
+export MODEL_NAME=agnes-2.0-flash
 ```
 
-行业级验收：
+When `MODEL_API_KEY` is present, the Brief Synthesizer uses the configured OpenAI-compatible chat endpoint. Without a key, the deterministic Chinese template keeps the demo runnable.
+
+## API Example
+
+```bash
+curl -s http://localhost:8002/brief \
+  -H 'content-type: application/json' \
+  -d '{"prompt":"给我生成一份关于 Indonesia nickel 的今日简报"}' | jq
+```
+
+Stable response fields include `status`, `warnings`, `source_mode`, `elapsed_ms`, `data_quality`, `intent`, `markdown` and `workflow_trace`.
+
+## QA And Packaging
 
 ```bash
 make test
@@ -36,16 +80,12 @@ make qa
 make package
 ```
 
-简报固定输出 `一、执行摘要 / 二、新闻摘要 / 三、资源量 / 储量数据 / 四、价格走势 / 五、风险提示 / 六、引用来源 / 七、数据缺口`。不支持的 commodity 会返回 `limited` 和 warning，不会静默降级到 lithium。
+`make qa` runs multi-topic brief cases including Pilbara lithium, Peru copper, Indonesia nickel, China rare earth, DRC cobalt, iron ore, zinc, gold, uranium and graphite. `make package` creates `/Users/Zhuanz/Desktop/02-mining-rights-daily-agent-tool.zip`.
 
-Web 控制台包含 Agent 工作流画布：用户输入、Planner、3 个 MCP server、Brief Synthesizer、Markdown Output。每个节点有状态、耗时和摘要，Raw Tool Output 默认折叠。
+## MCP Client Config
 
-可选模型增强：
+`mcp-config.json` is included for Claude Desktop / Cursor-style MCP clients. Adjust absolute paths if the project is moved.
 
-```bash
-cp .env.example .env
-export APIMART_API_KEY=...
-export APIMART_MODEL=gemini-3.5-flash
-```
+## Boundaries
 
-有 APIMart key 时使用 Gemini 生成中文简报；无 key 或模型失败时使用中文模板 fallback，demo 仍可运行。真实密钥不得写入项目文件或 zip。
+This is a complete interview MVP, not a production data room. Fixture sources are marked as fixture data, unsupported commodities remain limited, and real paid/login sources are not bypassed.

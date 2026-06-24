@@ -2,32 +2,45 @@
   "tool": "02-mining-rights-daily-agent",
   "url": "http://127.0.0.1:8002/",
   "status": "passed",
-  "tested_at": "2026-06-23",
+  "tested_at": "2026-06-24",
   "checks": {
+    "live_model_provider": "agnes-ai",
+    "live_model_mode": "live",
     "markdown_brief_visible": true,
     "chinese_markdown_sections_visible": true,
     "no_status_prefix_in_brief": true,
     "workflow_canvas_visible": true,
+    "workflow_contains_three_mcp_nodes": true,
     "prompt_change_updates_topic_and_commodity": true,
     "raw_tool_output_default_collapsed": true,
     "raw_tool_output_is_structured_tool_json": true,
-    "tool_buttons_enabled_after_actions": true,
-    "unsupported_commodity_returns_limited_warning": true,
     "placeholder_tokens": [],
     "horizontal_overflow": false
   },
   "viewports": [
-    {"width": 1280, "height": 720, "horizontal_overflow": false},
-    {"width": 768, "height": 900, "horizontal_overflow": false},
-    {"width": 390, "height": 844, "horizontal_overflow": false}
+    {
+      "width": 1280,
+      "height": 720,
+      "horizontal_overflow": false
+    },
+    {
+      "width": 768,
+      "height": 900,
+      "horizontal_overflow": false
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "horizontal_overflow": false
+    }
   ],
   "interactions": [
     "Loaded console and verified Raw Tool Output details is closed.",
     "Generated default Pilbara lithium Chinese brief.",
-    "Changed prompt to Indonesia nickel and verified the brief topic and commodity changed.",
+    "Changed prompt to Indonesia nickel and verified Chinese brief topic changed.",
+    "Verified model_provider=agnes-ai and model_mode=live in Raw Tool Output.",
+    "Verified fixed Chinese Markdown sections and no [ok] prefix.",
     "Verified workflow canvas contains Planner, three MCP nodes, Synthesizer and Markdown Output.",
-    "Clicked tool inventory, news probe, and price probe.",
-    "Changed commodity to cobalt and verified explicit unsupported warning.",
-    "Verified buttons returned to enabled state."
+    "Verified no TODO/placeholder/Traceback text in generated brief."
   ]
 }

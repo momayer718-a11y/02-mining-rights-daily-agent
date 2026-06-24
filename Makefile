@@ -7,13 +7,14 @@ console:
 	uvicorn console.app:app --host 0.0.0.0 --port 8002
 
 test:
-	pytest -q
+	PYTHONPATH=. pytest -q
 
 qa:
-	python3 -m qa.run_qa
+	PYTHONPATH=. python3 -m qa.run_qa
 
 package:
-	cd .. && zip -qr /Users/Zhuanz/Desktop/02-mining-rights-daily-agent-tool.zip 02-mining-rights-daily-agent -x '02-mining-rights-daily-agent/.pytest_cache/*' '02-mining-rights-daily-agent/**/__pycache__/*'
+	rm -f /Users/Zhuanz/Desktop/02-mining-rights-daily-agent-tool.zip
+	cd .. && zip -qr /Users/Zhuanz/Desktop/02-mining-rights-daily-agent-tool.zip 02-mining-rights-daily-agent -x '02-mining-rights-daily-agent/.git/*' '02-mining-rights-daily-agent/.env' '02-mining-rights-daily-agent/.env.local' '02-mining-rights-daily-agent/.venv/*' '02-mining-rights-daily-agent/.pytest_cache/*' '02-mining-rights-daily-agent/**/__pycache__/*' '02-mining-rights-daily-agent/outputs/*.log'
 
 mcp-news:
 	python3 -m servers.mining_news_mcp
