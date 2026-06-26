@@ -103,7 +103,7 @@ make qa
 make package
 ```
 
-`make qa` runs multi-topic brief cases including Pilbara lithium, Peru copper, Indonesia nickel, China rare earth, DRC cobalt, iron ore, zinc, gold, uranium and graphite. `make package` creates `/Users/Zhuanz/Desktop/02-mining-rights-daily-agent-tool.zip`.
+`make qa` runs multi-topic brief cases including Pilbara lithium, Peru copper, Indonesia nickel, China rare earth, DRC cobalt, iron ore, zinc, gold, uranium and graphite. Fresh QA artifacts are written under `outputs/generated/` by default; set `QA_UPDATE_TRACKED_REPORTS=1` only when intentionally refreshing the checked-in report snapshots. `make package` creates `/Users/Zhuanz/Desktop/02-mining-rights-daily-agent-tool.zip`.
 
 ## MCP Client Config
 

@@ -8,7 +8,7 @@ python3 -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
 make brief
-cat outputs/pilbara_daily.md
+cat outputs/generated/pilbara_daily.md
 ```
 
 Start the Web console:
@@ -62,7 +62,7 @@ make qa
 make package
 ```
 
-`make qa` writes `QA_REPORT.md` and `qa/reports/*.json`. `make package` writes `/Users/Zhuanz/Desktop/02-mining-rights-daily-agent-tool.zip`.
+`make qa` writes fresh reports under `outputs/generated/` so clone-time verification does not modify tracked files. Set `QA_UPDATE_TRACKED_REPORTS=1` only when intentionally refreshing `QA_REPORT.md` and `qa/reports/*.json`. `make package` writes `/Users/Zhuanz/Desktop/02-mining-rights-daily-agent-tool.zip`.
 
 ## MCP Server Commands
 

@@ -4,6 +4,7 @@ import json
 import re
 import statistics
 import time
+import os
 from pathlib import Path
 
 from agent.daily_brief import generate_brief_payload
@@ -52,11 +53,18 @@ def run() -> dict:
         "rows": rows,
     }
     report = {"tool": "02-mining-rights-daily-agent", "status": "passed" if backend["passed"] == backend["total"] and frontend["passed"] else "failed", "elapsed_ms": round((time.perf_counter() - started) * 1000, 2), "frontend": frontend, "backend": backend}
-    out_dir = Path("qa/reports")
+    out_dir = Path(os.getenv("QA_REPORT_DIR", "outputs/generated/qa"))
     out_dir.mkdir(parents=True, exist_ok=True)
     (out_dir / "qa_report.json").write_text(json.dumps(report, ensure_ascii=False, indent=2), encoding="utf-8")
     (out_dir / "frontend_report.json").write_text(json.dumps(frontend, ensure_ascii=False, indent=2), encoding="utf-8")
-    Path("QA_REPORT.md").write_text(_markdown(report), encoding="utf-8")
+    markdown = _markdown(report)
+    Path(os.getenv("QA_REPORT_MD", "outputs/generated/QA_REPORT.md")).write_text(markdown, encoding="utf-8")
+    if _truthy(os.getenv("QA_UPDATE_TRACKED_REPORTS", "")):
+        tracked_dir = Path("qa/reports")
+        tracked_dir.mkdir(parents=True, exist_ok=True)
+        (tracked_dir / "qa_report.json").write_text(json.dumps(report, ensure_ascii=False, indent=2), encoding="utf-8")
+        (tracked_dir / "frontend_report.json").write_text(json.dumps(frontend, ensure_ascii=False, indent=2), encoding="utf-8")
+        Path("QA_REPORT.md").write_text(markdown, encoding="utf-8")
     if report["status"] != "passed":
         raise SystemExit(json.dumps(report, ensure_ascii=False, indent=2))
     print(json.dumps(report, ensure_ascii=False, indent=2))
@@ -78,6 +86,10 @@ def _workflow_ok(result: dict) -> bool:
 
 def _signature(markdown: str) -> str:
     return re.sub(r"\s+", " ", markdown[:260]).strip()
+
+
+def _truthy(value: str) -> bool:
+    return value.lower() in {"1", "true", "yes", "on"}
 
 
 def _markdown(report: dict) -> str:

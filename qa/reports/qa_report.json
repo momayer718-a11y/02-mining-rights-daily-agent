@@ -1,7 +1,7 @@
 {
   "tool": "02-mining-rights-daily-agent",
   "status": "passed",
-  "elapsed_ms": 6.05,
+  "elapsed_ms": 24.94,
   "frontend": {
     "passed": true,
     "missing": [],
@@ -22,8 +22,8 @@
     "total": 25,
     "passed": 25,
     "success_rate": 1.0,
-    "avg_elapsed_ms": 0.17,
-    "p95_elapsed_ms": 0.28,
+    "avg_elapsed_ms": 0.9,
+    "p95_elapsed_ms": 1.39,
     "limited_rate": 0.36,
     "unique_brief_signatures": 18,
     "rows": [
@@ -32,7 +32,7 @@
         "expected": "ok",
         "actual": "ok",
         "passed": true,
-        "elapsed_ms": 0.97,
+        "elapsed_ms": 1.75,
         "warnings": [
           "fixture price cache; replace with licensed market feed for production"
         ],
@@ -45,7 +45,7 @@
         "expected": "ok",
         "actual": "ok",
         "passed": true,
-        "elapsed_ms": 0.31,
+        "elapsed_ms": 1.39,
         "warnings": [
           "fixture price cache; replace with licensed market feed for production"
         ],
@@ -58,7 +58,7 @@
         "expected": "ok",
         "actual": "ok",
         "passed": true,
-        "elapsed_ms": 0.28,
+        "elapsed_ms": 1.12,
         "warnings": [
           "fixture price cache; replace with licensed market feed for production"
         ],
@@ -71,7 +71,7 @@
         "expected": "ok",
         "actual": "ok",
         "passed": true,
-        "elapsed_ms": 0.27,
+        "elapsed_ms": 0.86,
         "warnings": [
           "fixture price cache; replace with licensed market feed for production"
         ],
@@ -84,7 +84,7 @@
         "expected": "limited",
         "actual": "limited",
         "passed": true,
-        "elapsed_ms": 0.2,
+        "elapsed_ms": 0.24,
         "warnings": [
           "DRC/cobalt source not loaded",
           "no relevant news evidence found",
@@ -100,7 +100,7 @@
         "expected": "ok",
         "actual": "ok",
         "passed": true,
-        "elapsed_ms": 0.12,
+        "elapsed_ms": 0.63,
         "warnings": [
           "fixture price cache; replace with licensed market feed for production"
         ],
@@ -113,7 +113,7 @@
         "expected": "ok",
         "actual": "ok",
         "passed": true,
-        "elapsed_ms": 0.11,
+        "elapsed_ms": 0.69,
         "warnings": [
           "fixture price cache; replace with licensed market feed for production"
         ],
@@ -126,7 +126,7 @@
         "expected": "ok",
         "actual": "ok",
         "passed": true,
-        "elapsed_ms": 0.11,
+        "elapsed_ms": 0.92,
         "warnings": [
           "fixture price cache; replace with licensed market feed for production"
         ],
@@ -139,7 +139,7 @@
         "expected": "ok",
         "actual": "ok",
         "passed": true,
-        "elapsed_ms": 0.12,
+        "elapsed_ms": 1.24,
         "warnings": [
           "fixture price cache; replace with licensed market feed for production"
         ],
@@ -152,7 +152,7 @@
         "expected": "ok",
         "actual": "ok",
         "passed": true,
-        "elapsed_ms": 0.09,
+        "elapsed_ms": 3.11,
         "warnings": [
           "fixture price cache; replace with licensed market feed for production"
         ],
@@ -165,7 +165,7 @@
         "expected": "ok",
         "actual": "ok",
         "passed": true,
-        "elapsed_ms": 0.14,
+        "elapsed_ms": 0.77,
         "warnings": [
           "fixture price cache; replace with licensed market feed for production"
         ],
@@ -178,7 +178,7 @@
         "expected": "ok",
         "actual": "ok",
         "passed": true,
-        "elapsed_ms": 0.12,
+        "elapsed_ms": 0.77,
         "warnings": [
           "fixture price cache; replace with licensed market feed for production"
         ],
@@ -191,7 +191,7 @@
         "expected": "ok",
         "actual": "ok",
         "passed": true,
-        "elapsed_ms": 0.11,
+        "elapsed_ms": 0.78,
         "warnings": [
           "fixture price cache; replace with licensed market feed for production"
         ],
@@ -204,7 +204,7 @@
         "expected": "ok",
         "actual": "ok",
         "passed": true,
-        "elapsed_ms": 0.11,
+        "elapsed_ms": 1.03,
         "warnings": [
           "fixture price cache; replace with licensed market feed for production"
         ],
@@ -217,7 +217,7 @@
         "expected": "ok",
         "actual": "ok",
         "passed": true,
-        "elapsed_ms": 0.1,
+        "elapsed_ms": 1.02,
         "warnings": [
           "fixture price cache; replace with licensed market feed for production"
         ],
@@ -230,7 +230,7 @@
         "expected": "limited",
         "actual": "limited",
         "passed": true,
-        "elapsed_ms": 0.1,
+        "elapsed_ms": 1.08,
         "warnings": [
           "fixture price cache; replace with licensed market feed for production",
           "limited news coverage for zinc; loaded MCP cache lacks dedicated article evidence",
@@ -245,7 +245,7 @@
         "expected": "limited",
         "actual": "limited",
         "passed": true,
-        "elapsed_ms": 0.11,
+        "elapsed_ms": 0.65,
         "warnings": [
           "fixture price cache; replace with licensed market feed for production",
           "limited news coverage for iron ore; loaded MCP cache lacks dedicated article evidence"
@@ -259,7 +259,7 @@
         "expected": "limited",
         "actual": "limited",
         "passed": true,
-        "elapsed_ms": 0.09,
+        "elapsed_ms": 1.15,
         "warnings": [
           "DRC/cobalt source not loaded",
           "no relevant news evidence found",
@@ -275,7 +275,7 @@
         "expected": "limited",
         "actual": "limited",
         "passed": true,
-        "elapsed_ms": 0.08,
+        "elapsed_ms": 0.64,
         "warnings": [
           "DRC/cobalt source not loaded",
           "no relevant news evidence found",
@@ -291,7 +291,7 @@
         "expected": "limited",
         "actual": "limited",
         "passed": true,
-        "elapsed_ms": 0.07,
+        "elapsed_ms": 0.27,
         "warnings": [
           "no relevant news evidence found",
           "price trend unsupported; no silent fallback applied",
@@ -306,7 +306,7 @@
         "expected": "limited",
         "actual": "limited",
         "passed": true,
-        "elapsed_ms": 0.16,
+        "elapsed_ms": 0.35,
         "warnings": [
           "no relevant news evidence found",
           "price trend unsupported; no silent fallback applied",
@@ -321,7 +321,7 @@
         "expected": "limited",
         "actual": "limited",
         "passed": true,
-        "elapsed_ms": 0.08,
+        "elapsed_ms": 0.26,
         "warnings": [
           "no relevant news evidence found",
           "price trend unsupported; no silent fallback applied",
@@ -336,7 +336,7 @@
         "expected": "limited",
         "actual": "limited",
         "passed": true,
-        "elapsed_ms": 0.08,
+        "elapsed_ms": 0.24,
         "warnings": [
           "no relevant news evidence found",
           "price trend unsupported; no silent fallback applied",
@@ -351,7 +351,7 @@
         "expected": "ok",
         "actual": "ok",
         "passed": true,
-        "elapsed_ms": 0.12,
+        "elapsed_ms": 0.81,
         "warnings": [
           "fixture price cache; replace with licensed market feed for production"
         ],
@@ -364,7 +364,7 @@
         "expected": "ok",
         "actual": "ok",
         "passed": true,
-        "elapsed_ms": 0.11,
+        "elapsed_ms": 0.69,
         "warnings": [
           "fixture price cache; replace with licensed market feed for production"
         ],
