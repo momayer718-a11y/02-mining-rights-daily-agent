@@ -8,8 +8,10 @@ services:
     environment:
       - PYTHONPATH=/app
       - MODEL_API_KEY=${MODEL_API_KEY:-}
-      - MODEL_BASE_URL=${MODEL_BASE_URL:-https://apihub.agnes-ai.com/v1}
-      - MODEL_NAME=${MODEL_NAME:-agnes-2.0-flash}
+      - MODEL_BASE_URL=${MODEL_BASE_URL:-https://api.deepseek.com}
+      - MODEL_NAME=${MODEL_NAME:-deepseek-v4-pro}
+      - MODEL_REASONING_EFFORT=${MODEL_REASONING_EFFORT:-medium}
+      - MODEL_KEY_PASSPHRASE=${MODEL_KEY_PASSPHRASE:-}
     command: >
       sh -c "python -m agent.daily_brief '给我生成一份关于 Pilbara 锂矿的今日简报' --out outputs/pilbara_daily.md &&
              uvicorn console.app:app --host 0.0.0.0 --port 8002"

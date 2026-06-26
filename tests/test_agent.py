@@ -1,9 +1,22 @@
 from __future__ import annotations
 
+import pytest
+
 from agent.daily_brief import generate_brief, generate_brief_payload
 from tools.news import fetch_article, search
 from tools.pdf_extract import extract_resources
 from tools.prices import get_price, get_trend
+
+
+@pytest.fixture(autouse=True)
+def disable_live_model(monkeypatch) -> None:
+    monkeypatch.setenv("MODEL_API_KEY", "")
+    monkeypatch.setenv("MODEL_KEY_PASSPHRASE", "")
+    monkeypatch.setattr("agent.daily_brief.complete_json", lambda *args, **kwargs: None)
+    monkeypatch.setattr(
+        "agent.daily_brief.model_metadata",
+        lambda: {"model_provider": "fallback", "model_name": "deterministic-template", "model_mode": "fallback", "model_reasoning": "not_requested"},
+    )
 
 
 def test_news_tools() -> None:

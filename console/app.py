@@ -7,6 +7,7 @@ from fastapi.responses import HTMLResponse
 from pydantic import BaseModel
 
 from agent.daily_brief import generate_brief_payload
+from agent.intent import parse_brief_intent
 from tools.news import fetch_article, search
 from tools.pdf_extract import extract_resources
 from tools.prices import get_price, get_trend
@@ -50,10 +51,11 @@ def brief(payload: BriefRequest) -> dict:
 
 
 @app.get("/news")
-def news(query: str = "Pilbara lithium", days: int = 7) -> dict:
-    rows = search(query, days)
+def news(query: str = "Pilbara lithium", days: int | None = None) -> dict:
+    effective_days = days or parse_brief_intent(query).days
+    rows = search(query, effective_days)
     warnings = [] if rows else ["no relevant news evidence found"]
-    return {"status": "ok" if rows else "limited", "query": query, "days": days, "results": rows, "articles": [fetch_article(row["url"]) for row in rows[:3]], "warnings": warnings, "source_mode": "fixture", "data_quality": {"grade": "usable" if rows else "limited", "result_count": len(rows)}, "elapsed_ms": 0}
+    return {"status": "ok" if rows else "limited", "query": query, "days": effective_days, "results": rows, "articles": [fetch_article(row["url"]) for row in rows[:3]], "warnings": warnings, "source_mode": "fixture", "data_quality": {"grade": "usable" if rows else "limited", "result_count": len(rows)}, "elapsed_ms": 0}
 
 
 @app.get("/resources")
@@ -62,11 +64,12 @@ def resources(pdf_url: str = "fixture://pilbara-technical-report") -> dict:
 
 
 @app.get("/prices")
-def prices(commodity: str = "lithium", days: int = 7) -> dict:
+def prices(commodity: str = "lithium", days: int | None = None) -> dict:
+    effective_days = days or parse_brief_intent(commodity).days
     latest = get_price(commodity)
-    trend = get_trend(commodity, days)
+    trend = get_trend(commodity, effective_days)
     status = "ok" if trend.get("status") == "ok" else "limited"
-    return {"status": status, "latest": latest, "trend": trend, "warnings": sorted(set(latest.get("warnings", []) + trend.get("warnings", []))), "source_mode": latest.get("source", "none"), "data_quality": {"grade": "usable" if status == "ok" else "limited"}, "elapsed_ms": 0}
+    return {"status": status, "days": effective_days, "latest": latest, "trend": trend, "warnings": sorted(set(latest.get("warnings", []) + trend.get("warnings", []))), "source_mode": latest.get("source", "none"), "data_quality": {"grade": "usable" if status == "ok" else "limited"}, "elapsed_ms": 0}
 
 
 CONSOLE_HTML = """
@@ -143,9 +146,8 @@ CONSOLE_HTML = """
         </div>
         <hr style="border:0;border-top:1px solid var(--line);margin:16px 0">
         <label>工具探针</label>
-        <div class="field-grid">
+        <div>
           <input id="newsQuery" value="Pilbara lithium" aria-label="News query">
-          <input id="days" type="number" min="1" max="30" value="7" aria-label="Days">
         </div>
         <div style="margin-top:10px">
           <input id="commodity" value="lithium" aria-label="Commodity">
@@ -206,7 +208,7 @@ CONSOLE_HTML = """
     async function probeNews() {
       setBusy(newsBtn, true, '查询中...');
       try {
-        const data = await json(`/news?query=${encodeURIComponent(document.getElementById('newsQuery').value)}&days=${Number(document.getElementById('days').value) || 7}`);
+        const data = await json(`/news?query=${encodeURIComponent(document.getElementById('newsQuery').value)}`);
         raw.textContent = JSON.stringify(data, null, 2);
       } finally {
         setBusy(newsBtn, false);
@@ -224,7 +226,7 @@ CONSOLE_HTML = """
     async function probePrices() {
       setBusy(pricesBtn, true, '查询中...');
       try {
-        const data = await json(`/prices?commodity=${encodeURIComponent(document.getElementById('commodity').value)}&days=${Number(document.getElementById('days').value) || 7}`);
+        const data = await json(`/prices?commodity=${encodeURIComponent(document.getElementById('commodity').value)}`);
         raw.textContent = JSON.stringify(data, null, 2);
       } finally {
         setBusy(pricesBtn, false);

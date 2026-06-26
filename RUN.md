@@ -32,11 +32,17 @@ Open `http://localhost:8002` after startup.
 ```bash
 cp .env.example .env
 export MODEL_API_KEY=your_key
-export MODEL_BASE_URL=https://apihub.agnes-ai.com/v1
-export MODEL_NAME=agnes-2.0-flash
+export MODEL_BASE_URL=https://api.deepseek.com
+export MODEL_NAME=deepseek-v4-pro
+export MODEL_THINKING_ENABLED=0
+export MODEL_REASONING_EFFORT=medium
+export MODEL_MAX_TOKENS=1800
+export MODEL_KEY_PASSPHRASE=your_local_decryption_passphrase
 ```
 
-The key is read from the environment only. Do not write real keys into project files, Docker Compose, README, QA reports or release zips.
+The app reads `MODEL_API_KEY` first. If it is empty, it can decrypt `config/model_api_key.enc.json` with `MODEL_KEY_PASSPHRASE`; commit only the encrypted JSON, not a plaintext `.env`.
+
+The example keeps `MODEL_THINKING_ENABLED=0` for stable demo latency. Set it to `1` only when you explicitly want DeepSeek V4 Pro thinking output.
 
 ## Brief Smoke Test
 
