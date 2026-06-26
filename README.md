@@ -1,18 +1,25 @@
 # Mining Rights Daily Agent Console
 
-Mining Rights Daily Agent Console is a standalone mining-industry daily brief generator for interview question 2. The user enters a topic such as `给我生成一份关于 Pilbara 锂矿的今日简报`; the agent plans the request, calls three MCP-style tools, and returns a structured Chinese Markdown brief with workflow trace, source warnings and auditable raw tool output.
+## 项目简介
 
-This repository is project 02 from the mining interview MVP set. It is fully standalone and can be evaluated, containerized or zipped independently.
+Mining Rights Daily Agent Console 是一个面向矿业主题的日报生成智能体。用户输入主题，例如 `给我生成一份关于 Pilbara 锂矿的今日简报`，系统会完成意图识别、工具调用、工作流追踪和中文 Markdown 简报生成。
 
-Highlights:
+Mining Rights Daily Agent Console is a daily brief agent for mining-industry topics. A user enters a prompt such as `给我生成一份关于 Pilbara 锂矿的今日简报`, and the system handles intent parsing, tool orchestration, workflow tracing and structured Chinese Markdown brief generation.
 
-- Agent workflow canvas: User Input -> Planner -> mining news, resource PDF and price tools -> Brief Synthesizer -> Markdown Output.
-- Multi-topic intent parsing: Chinese, English and mixed prompts for lithium, nickel, copper, rare earth, iron ore, zinc and other mining topics.
-- DeepSeek V4 Pro support: encrypted key fallback via `config/model_api_key.enc.json`, with template fallback when no key is available.
-- Evidence boundary: unsupported commodities or missing source data return `limited` plus warnings instead of silently falling back to a default topic.
-- QA-ready output: tests and QA reports cover topic variation, workflow trace integrity, unsupported-commodity handling and Markdown structure.
+## 核心能力 / Key Features
 
-Latest checked result: unit tests passed locally, and the project remains runnable without a live model key through deterministic Chinese templates.
+- 工作流画布 / Workflow canvas: User Input -> Planner -> mining news, resource PDF and price tools -> Brief Synthesizer -> Markdown Output.
+- 多主题解析 / Multi-topic parsing: 支持锂、镍、铜、稀土、铁矿石、锌等矿业主题的中文、英文和中英混合输入。
+- 结构化简报 / Structured brief: 输出执行摘要、新闻摘要、资源量/储量、价格走势、风险提示、引用来源和数据缺口。
+- DeepSeek V4 Pro 支持 / DeepSeek V4 Pro support: 支持加密 key fallback，也支持无 live model 的本地模板运行。
+- 可测试交付 / Testable delivery: 包含单元测试、QA 报告、Docker 运行方式和独立打包命令。
+
+## 最新验证 / Latest Validation
+
+| Check | Result |
+| --- | --- |
+| Unit tests | 6 passed |
+| Local fallback | Runnable without a live model key |
 
 ## What It Does
 
@@ -104,4 +111,4 @@ make package
 
 ## Boundaries
 
-This is a complete interview MVP, not a production data room. Fixture sources are marked as fixture data, unsupported commodities remain limited, and real paid/login sources are not bypassed.
+This is a local mining brief-generation tool, not a production data room or financial-advice product. For production use, connect the workflow to governed enterprise data and review outputs through the normal compliance process.
